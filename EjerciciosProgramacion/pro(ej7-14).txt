@@ -1,0 +1,101 @@
+7.
+def mayorZero():
+	a = int(input('escribe un numero '))
+	if a >= 0:
+		print ('el numero leido es positivo')
+	else:
+		print ('el numero leido es negativo')
+8.
+def cualEsMayor ():
+	a = int(input('escribe un numero '))
+	b = int(input('escribe otro numero '))
+	if a < b:
+		print (str(b) + ' es mayor que ' + str(a))
+	if b < a:
+		print (str(a) + ' es mayor que ' + str(b))
+	if a == b:
+		print (str(a) + ' son iguales ' + str(b))
+9.
+def sumaPositivos():
+	a = int(input('escribe un numero '))
+	b = int(input('escribe otro numero '))
+	if a < 0 or b < 0:
+		print ('No se calcula la suma porque alguno de los números o los dos no son positivos')
+	else:
+		print ('La suma de los dos números es: ' + str(a + b))
+10.
+def sumaPositivos():
+	a = int(input('escribe un numero '))
+	b = int(input('escribe otro numero '))
+	if a < 0 and b < 0:
+		print ('No se calcula la suma porque los dos números son negativos')
+	if a < 0:
+		print ('No se calcula la suma porque el primer número es negativo')
+	if b < 0:
+		print ('No se calcula la suma porque el segundo número es negativo')
+	if a > 0 and b > 0:
+		print ('La suma de los dos números es: ' + str(a + b))
+11.
+def sonSuma():
+	a = int(input('escribe un numero '))
+	b = int(input('escribe otro numero '))
+	c = int(input('escribe otro numero '))
+	print ('Números introducidos: '+ str(a))
+	print ('Números introducidos: '+ str(b))
+	print ('Números introducidos: '+ str(c))
+	if a == b + c:
+		return print ('Se cumple que N1 = N2 + N3')
+	if b == a + c:
+		return print ('Se cumple que N2 = N1 + N3')
+	if c == a + b:
+		return print ('Se cumple que N3 = N1 + N2')
+	else:
+		print ('Los números no cumplen la condición')
+12.
+def sumaRara():
+	a = int(input('escribe un numero '))
+	b = int(input('escribe otro numero '))
+	if a % 2 == 0 and b % 2 == 0 and a < 50 and 100 < b < 500: 
+		return print (int(a+b))
+	else:
+		print ('ERROR')
+13.
+def importeFinal():
+	a = int(input('cuanto dinero ha pagado? '))
+	if a <= 20:
+		print('El total con un descuento del 0% es: ' + str(a))
+	if 20 < a <= 100:
+		a = ((a/100)* 95)
+		print('El total con un descuento del 5% es: ' + str(a))
+	if a > 100:
+		a = ((a/100)* 90)
+		print('El total con un descuento del 10% es: ' + str(a))
+14. 
+def cambio ():
+	a = int(input())
+	b = 0
+	while a/100 >= 1:
+		b = b + 1
+		a = a - 100
+	print (str(b) + ' billetes de 100 euros')
+	b = 0
+	while a/20 >= 1:
+		b = b + 1
+		a = a - 20
+	print (str(b) + ' billetes de 20 euros')
+	b = 0
+	while a/10 >= 1:
+		b = b + 1
+		a = a - 10
+	print (str(b) + ' billetes de 10 euros')
+	b = 0
+	while a/5 >= 1:
+		b = b + 1
+		a = a - 5
+	print (str(b) + ' billetes de 5 euros')
+	b = 0
+	while a/1 >= 1:
+		b = b + 1
+		a = a - 1
+	print (str(b) + ' monedas de 1 euro')
+
