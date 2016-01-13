@@ -8,14 +8,17 @@ class Fecha:
 		self.checkFecha()
 	def setDia(self, dia):
 		self.dia = dia
+		self.checkDia()
 	def getDia(self):
 		return self.dia
 	def setMes(self, mes):
 		self.mes = mes
+		self.checkMes()
 	def getMes(self):
 		return self.mes
 	def setAño(self, año):
 		self.año=año
+		self.checkAño()
 	def getAño(self):
 		return self.año
 	def getDiasMes(self):
@@ -25,9 +28,9 @@ class Fecha:
 	def mesLetra(self):
 		return self.getMesLetra()[self.getMes()-1] 
 	def setFecha(self, dia, mes, año):
-			self.setDia(dia)
-			self.setMes(mes)
 			self.setAño(año)
+			self.setMes(mes)
+			self.setDia(dia)
 			self.checkFecha()
 	def getFecha(self):
 		return '%s-%s-%s' %(self.getDia(),self.getMes(),self.getAño())
@@ -68,7 +71,7 @@ class Fecha:
 	def checkDia(self):
 		if self.getDia() in range(1, self.getDiasMes()[self.getMes()-1]+1):
 			pass
-		elif self.getMes() == 2 and self.getDia() == 29 and self.getAño() % 4 == 0:
+		elif self.getMes() == 2 and self.getDia() in range(29,30) and self.getAño() % 4 == 0:
 			pass
 		else:
 			self.setFecha(1,1,1900)
