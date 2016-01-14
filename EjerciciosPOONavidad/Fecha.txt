@@ -31,7 +31,6 @@ class Fecha:
 			self.setAño(año)
 			self.setMes(mes)
 			self.setDia(dia)
-			self.checkFecha()
 	def getFecha(self):
 		return '%s-%s-%s' %(self.getDia(),self.getMes(),self.getAño())
 	def imprimirFecha(self):
