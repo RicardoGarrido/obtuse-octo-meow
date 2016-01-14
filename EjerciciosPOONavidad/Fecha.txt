@@ -50,7 +50,10 @@ class Fecha:
 			if self.getMes()+modificadorMes == 12:
 				modificadorAño += 1
 				self.setMes(1)
-				modificadorMes = -1			
+				modificadorMes = -1
+			if cantidadDias == 0:
+				self.setFecha(self.diasMes[self.getMes() + modificadorMes-1],self.getMes()+modificadorMes,self.getAño()+modificadorAño)
+				
 	def checkAño(self):
 		try:
 			if self.getAño() >= 1900:
