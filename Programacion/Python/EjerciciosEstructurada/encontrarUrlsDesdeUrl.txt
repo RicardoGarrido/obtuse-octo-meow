@@ -1,0 +1,33 @@
+#rutina encargada de esxtraer el contenido HTML de la url que le introduzcamos)#
+from urllib.request import urlopen
+def get_page_3(url):
+	pagina = urlopen(url)
+	codigoHtml = pagina.read().decode('utf')
+	pagina.close()
+	return codigoHtml
+
+
+
+
+#rutina encargada de extraer las URLs del contenido extraido por get_page_3()#
+def buscarUrl (codigoHtml):
+	inicioBusqueda = 0
+	while codigoHtml.find('<a href="', inicioBusqueda) != -1:
+		posicionEnlace = codigoHtml.find('<a href="', inicioBusqueda)
+		inicioUrl = codigoHtml.find('"', posicionEnlace)+1
+		finalUrl=codigoHtml.find('"', inicioUrl)
+		url=codigoHtml[inicioUrl:finalUrl]
+		inicioBusqueda = finalUrl
+		print(url)
+#rutina encargada de ejecutar las dos rutinas anteriores, no se si es correcto ya que tiene mucho acoplamiento#
+def EncontrarUrlDesdeUrl():
+	url = input('de que pagina quiere retirar las URLs? ')
+	codigoHtml = get_page_3(url)
+	buscarUrl (codigoHtml)
+
+
+
+
+#caso test para buscarUrl (codigoHtml)#
+
+codigoHtml = 'oghkjadfkldsfgjñldfkhjdkñlfh <a href="guay">kljgknllkkdsjfghñlkdjfhñldkjh <a href="masguay"> dsafhdshjjdfj'

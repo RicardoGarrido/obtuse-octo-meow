@@ -1,0 +1,39 @@
+ejercicio 1
+numero=float(input('dime un numero '))
+print ('el resultado es'numero', 'numero*2', 'numero*3')
+
+ejercicio 2
+Escribe un programa que pida por teclado el radio de una circunferencia, y que a continuación calcule y escriba en pantalla la longitud de la circunferencia y del área del círculo.
+radio=float(input('introduce el radio de la circunferencia'))
+pi=3.14
+print ('el perimetro de la circunfenencia es igual a 'radio*2*pi', y el area es igual a 'pi*radio*radio')
+
+ejercicio 3
+Repite el ejercicio 2 utilizando una constante que represente el valor de 	PI.
+radio=float(input('introduce el radio de la circunferencia'))
+pi=3.14
+print ('el perimetro de la circunfenencia es igual a 'radio*2*pi', y el area es igual a 'pi*radio*radio')
+
+
+ejercicio 4
+Escribe un programa que calcule el área de una finca rectangular en metros cuadrados, así como su perímetro exterior, también en metros.
+long=float(input('introduce la longitud en metros'))
+anch=float(input('introduce la anchura en metros'))
+print ('el perimetro mide 'long*2+anch*2' metros y el area mide 'long*anch' metros cuadrado')
+
+ejercicio 5
+Escribe un programa que calcule lo que tiene que cobrar un empleado sabiendo que se le tiene que aplicar al sueldo una retención del 20%.
+sbase=float(input('introduce el sueldo'))
+print ('el salario neto es de 'sbase*80/100)
+
+ejercicio 6
+Escribe un programa que pida por teclado dos valores de tipo numérico que se han de guardar en sendas variables. 
+¿Qué instrucciones habría que utilizar para intercambiar su contenido? (es necesario utilizar una variable auxiliar). 
+Para comprobar que el algoritmo ideado es correcto, muestra en pantalla el contenido de las variables una vez leídas,
+ y vuelve a mostrar su contenido una vez hayas intercambiado sus valores.
+val1=float(input('introduce un numero '))
+val2=float(input('introduce otro numero '))
+a=val1
+b=val2
+val2=a
+val1=b

@@ -1,0 +1,76 @@
+def marcador(valor):
+	if valor == "." :
+		return "listo"
+	else:
+		pass
+def mayorEntreDos(nuevoNumero, mayorNumero):
+	if nuevoNumero > mayorNumero:
+		mayorNumero = nuevoNumero
+		return mayorNumero
+	else: 
+		return mayorNumero
+def menorEntreDos(nuevoNumero, menorNumero):
+	if nuevoNumero < menorNumero:
+		menorNumero = nuevoNumero
+		return menorNumero
+	else: 
+		return menorNumero	
+def media (suma, divisor):
+	media=suma / divisor
+	return media
+#PROGRAMA PRINCIPAL#
+def numeroMayorMenorMedia():
+	mayorNumero = -float ('inf')
+	menorNumero = float('inf')
+	suma = 0
+	contador = 0
+	parar = None
+	while parar != 'listo':
+		numero = input()
+		parar = marcador(numero)
+		if numero != '.':
+			numero = int(numero)
+			mayorNumero = mayorEntreDos(numero, mayorNumero)
+			menorNumero = menorEntreDos(numero, menorNumero)
+			contador += 1
+			suma = suma + numero
+		else:
+			pass
+	media = media(suma, contador)
+	print (mayorNumero)
+	print (menorNumero)
+	print (media)
+
+#CASOS TEST# 
+test=['.', 3]
+def testMarcador(test):
+	if marcador(test[0]) == "listo":
+		print('OK caso 1')
+	if marcador(test[1]) == None:
+		print('OK caso 2')
+​#CASO TEST MAYOR NUMERO#
+test = ([2, 4], 4)
+def testMayorEntreDos(test): 
+	numeros=test[0]    
+    if mayorEntreDos(numeros[0], numeros[1]) == test[1]:
+    	print ('ok')
+    else:
+    	print ('fail')
+ 
+#CASO TEST MENOR NUMERO#
+test = ([4, 2], 2)
+def testMenorEntreDos(test): 
+	numeros=test[0]    
+	if menorEntreDos(numeros[0], numeros[1]) == test[1]:
+		print ('ok')
+	else:
+		print ('fail')
+​
+#CASO TEST media NUMERO#
+test = ([4, 2], 2)
+def testMedia(test): 
+	numeros=test[0]    
+	if menorEntreDos(numeros[0], numeros[1]) == test[1]:
+		print ('ok')
+	else:
+		print ('fail')
