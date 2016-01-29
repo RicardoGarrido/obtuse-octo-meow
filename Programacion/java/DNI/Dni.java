@@ -4,7 +4,7 @@ public class Dni{
 	private String dni  = null;
 	private Boolean numeroSano = false;
 	private Boolean letraSana 	= false;
-	// Composici髇 (agregaci髇) "Has - a" / "Tiene - un"
+	// Composici贸n (agregaci贸n) "Has - a" / "Tiene - un"
 	private TablaAsignacion tabla = new TablaAsignacion();
 	private Pattern PrimerasLetrasNIE = Pattern.compile("[XYZ]");
 	
@@ -49,10 +49,10 @@ public class Dni{
 	}
 	
 	/*
-	 * L骻ica 
+	 * L贸gica 
 	 */
 
-	/* Interfaz P鷅lica */
+	/* Interfaz P煤blica */
 	public Boolean checkID(){
 		return checkCIF() || checkNIE();
 	}
@@ -65,7 +65,7 @@ public class Dni{
 		return getNumeroSano();
 	}
 	public Boolean checkNIE(){
-		checkNumero(getParteNumericaNie());
+		setNumeroSano( checkLongitud() && stringEsNumero( getParteNumericaNie() ) );
 		return checkPrimeraLetraNIE() && checkLongitud() && stringEsNumero(getParteNumericaNie())&& checkLetra(getParteNumericaNie());
 	}
 	
@@ -85,7 +85,7 @@ public class Dni{
 		if ( getNumeroSano() ){
 			return this.tabla.calcularLetra( parteNumerica );
 		}
-		else // EXCEPCION: aun no sabemos implementarlas - este c骴igo no es admisible
+		else // EXCEPCION: aun no sabemos implementarlas - este c贸digo no es admisible
 			return getParteAlfabeticaDni();
 	}
 
@@ -103,9 +103,6 @@ public class Dni{
 		}
 		return true;
 	}
-	public void checkNumero(String cadena){
-			setNumeroSano(stringEsNumero(cadena));
-		}
 	public Boolean checkPrimeraLetraNIE(){
 		Boolean sano = false;
 		System.out.println(dni.substring(0, 1));
