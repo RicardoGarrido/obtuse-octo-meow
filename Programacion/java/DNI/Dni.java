@@ -7,7 +7,6 @@ public class Dni{
 	// Composición (agregación) "Has - a" / "Tiene - un"
 	private TablaAsignacion tabla = new TablaAsignacion();
 	private Pattern PrimerasLetrasNIE = Pattern.compile("[XYZ]");
-	private Pattern UltimasLetrasProhibidasNIE = Pattern.compile("[^IÑOU]");
 	
 
 	/* Constructores */
@@ -37,15 +36,6 @@ public class Dni{
 	public void setPrimerasLetrasNIE(Pattern primerasLetrasNIE) {
 		PrimerasLetrasNIE = primerasLetrasNIE;
 	}
-
-	public Pattern getUltimasLetrasProhibidasNIE() {
-		return UltimasLetrasProhibidasNIE;
-	}
-
-	public void setUltimasLetrasProhibidasNIE(Pattern ultimasLetrasProhibidasNIE) {
-		UltimasLetrasProhibidasNIE = ultimasLetrasProhibidasNIE;
-	}
-
 	public Boolean getNumeroSano(){
 		return this.numeroSano;
 	}
@@ -67,7 +57,7 @@ public class Dni{
 		return checkCIF() || checkNIE();
 	}
 	public Boolean checkCIF(){
-		return checkDni() && checkLetra();
+		return checkDni() && checkLetra(getParteNumericaDni());
 	}
 	
 	public Boolean checkDni(){
@@ -75,12 +65,13 @@ public class Dni{
 		return getNumeroSano();
 	}
 	public Boolean checkNIE(){
-		return checkPrimeraLetraNIE() && checkUltimaLetraNIE() && checkLongitud() && stringEsNumero(getParteNumericaNie());
+		checkNumero(getParteNumericaNie());
+		return checkPrimeraLetraNIE() && checkLongitud() && stringEsNumero(getParteNumericaNie())&& checkLetra(getParteNumericaNie());
 	}
 	
-	public Boolean checkLetra(){
+	public Boolean checkLetra(String parteNumerica){
 		if (getNumeroSano() ) {
-			setLetraSana ( Character.isUpperCase(getParteAlfabeticaDni()) && checkLetraValida() );
+			setLetraSana ( Character.isUpperCase(getParteAlfabeticaDni()) && checkLetraValida(parteNumerica) );
 			return getLetraSana();
 		}
 		else {
@@ -88,11 +79,11 @@ public class Dni{
 		}
 	}
 					
-	public Character obtenerLetra(){
+	public Character obtenerLetra(String parteNumerica){
 		// calcularLetra no puede ejecutarse si antes no se cumplen las condiciones previas en checkDni
 		// y checkletra
 		if ( getNumeroSano() ){
-			return this.tabla.calcularLetra( getParteNumericaDni() );
+			return this.tabla.calcularLetra( parteNumerica );
 		}
 		else // EXCEPCION: aun no sabemos implementarlas - este código no es admisible
 			return getParteAlfabeticaDni();
@@ -112,17 +103,13 @@ public class Dni{
 		}
 		return true;
 	}
+	public void checkNumero(String cadena){
+			setNumeroSano(stringEsNumero(cadena));
+		}
 	public Boolean checkPrimeraLetraNIE(){
 		Boolean sano = false;
 		System.out.println(dni.substring(0, 1));
 		if (getPrimerasLetrasNIE().matcher(dni.substring(0, 1).toUpperCase()).matches()){
-			sano = true;
-		}
-		return sano;		
-	}
-	public Boolean checkUltimaLetraNIE(){
-		Boolean sano = false;
-		if (getUltimasLetrasProhibidasNIE().matcher(dni.substring(getDni().length()-1,getDni().length()).toUpperCase()).matches()){
 			sano = true;
 		}
 		return sano;		
@@ -132,16 +119,26 @@ public class Dni{
 		return (String) dni.substring(0, dni.length() - 1);
 	}
 	public String getParteNumericaNie(){
-		return (String) dni.substring(1,dni.length() - 1);
+		int valorLetra = 0;
+		if (dni.substring(0, 1).toUpperCase().equals("X")){
+			valorLetra = 0;
+		}
+		else if (dni.substring(0, 1).toUpperCase().equals("Y")){
+			valorLetra = 1;
+		}
+		else if (dni.substring(0, 1).toUpperCase().equals("Z")){
+			valorLetra = 2;
+		}
+		return valorLetra + dni.substring(1,dni.length() - 1);
 	}
 	
 	public Character getParteAlfabeticaDni() {
 		return dni.charAt(dni.length() - 1);
 	}
 	
-	public Boolean checkLetraValida() {
+	public Boolean checkLetraValida(String parteNumerica) {
 		if ( getNumeroSano() ) {
-			return getParteAlfabeticaDni() == obtenerLetra();
+			return getParteAlfabeticaDni() == obtenerLetra(parteNumerica);
 		}
 		else
 			return false;
