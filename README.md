@@ -1,3 +1,4 @@
-EJERCICIOS DESAROLLADOS DURANTE EL PRIMER CURSO DE LA FP DUAL.
-==============================================================
-La finalidad principal de estos ejercicios es didáctica y aprender los fundamentos de la programación.
+# EJERCICIOS DESAROLLADOS DURANTE LA FP DUAL DE DESARROLLO DE APLICACIONES WEB.
+**Los ejercicios desarrollados en este repositorio, tienen una finalidad didactica.**   
+
+Cada directorio esta relacionado a una de las asignaturas cursadas.
